@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="massage.css" />
+ <script src="http://ajaxzip3.github.io/ajaxzip3.js"></script>
+</head>
+
+<body>
+	
+<div id="contents">
+<h1>Masage</h1>
+<h2>ご意見、ご感想をお書きください</h2>
+
+<form action="" method="GET" name="frm">
+	■名前<br />
+	<input type="text" name="name1" size="30" /><br />
+	■メールアドレス<br />
+	<input type="text" name="email" size="30" /><br />
+	■メッセージをお願いします<br />
+	<textarea name="message" rows="6" cols="50"></textarea><br />
+
+
+	
+<br />
+	
+	<label>■ご予約日時</label>
+	
+		<link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css"/><br />
+
+	
+	<input type="text" name="yyk_dhms" id="yyk_dhms" placeholder="ご予約日時" size="24" autocomplete="off" onchange="checkForm();"/>
+				<br>
+
+
+
+
+
+
+
+
+	
+<input type="radio" name="kibo" id="runch" onclick="dp_runch();">
+<label for="runch">ランチ</label>
+<!--消えている-->
+<div class="none" id="jkn_rnch">
+ <select >
+   <option>希望のお時間</option>
+   <option>11:30(ランチ)</option>
+   <option>12:00(ランチ)</option>
+  </select>
+  <select id="cose_rnch">
+   <option>ご希望のコース</option>
+   <option>美食の歓びコース</option>
+   <option> 至福の午餐会コース</option>
+  </select>
+</div>  
+
+
+<input type="radio" name="kibo" id="diner" onclick="dp_dinr();">
+<label for="diner">ディナー</label>
+<!--消えている-->
+ <div class="none" id="jkn_dinr">
+  <select>
+   <option>希望のお時間</option>
+   <option>17:30(ディナー)</option>
+   <option>18:00(ディナー)</option>
+  </select>
+  <select id="cose_diner">
+   <option>ご希望のコース</option>
+   <option  value="2">ムニュKAGURA ～神楽～ &yen;6,500</option>
+   <option  value="3">シェフ大堀スペシャルディナー &yen;7,000</option>
+  </select>
+ </div>  
+
+
+ 
+ 
+ <input type="num" name="num" size="2" onchange="numcheck()" id="num" maxlength="2" min="1"
+ max="12" size="3">名様 
+ 
+ <input type="button" onclick="total_chk()" value="合計する">
+ <input type="num" name="total_plice" id="total_plice">
+
+
+
+
+
+
+
+
+
+<br />
+ 
+
+
+<label>■郵便番号</label>
+ <input type="text" name="zip1" maxlength="3"> -
+  <input type="text" name="zip2" maxlength="4" onchange="AjaxZip3.zip2addr('zip1','zip2','pref','city','addr')"> <br>
+<label>■都道府県</label> 
+ <input type="text" name="pref" maxlength="4"> 
+<label>■市町村</label> 
+  <input type="text" name="city"><br />
+<label>■それ以降の住所と番地</label> <br />
+
+  <input type="text" name="addr" id="addr"  onchange="addcheck();">
+ <!--イベントチャッチに問題あるかも-->     
+
+<input name="kana" id="kana" placeholder="フリガナ" onchange="kanacheck();">
+
+
+
+ 
+ 	<input type="submit" value="送信"/>
+	<input type="reset" value="リセット"/><br />
+ 
+  </form>
+
+
+
+
+
+
+
+
+
+<div id="gotop"></div>	
+	<a href="index.html">Topページに戻る</a>
+</div>
+
+
+
+
+<script src="frm.js">
+
+</script>
+
+
+
+
+<script src="./jquery.js"></script>
+<script src="./jquery.datetimepicker.js"></script>
+<script>
+
+	$('#yyk_dhms').datetimepicker({
+
+		lang:'ja',
+		minDate : '-1970/01/01',
+		maxDate : '+1970/01/31',
+		//timepicker:false
+		allowTimes : ['12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00','23:30','24:00','24:30'],
+		//step : 30
+	}); 
+	
+</script>
+<br />
+
+
+
+</body>
+</html>
