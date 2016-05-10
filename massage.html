@@ -24,17 +24,18 @@
 
 	
 <br />
-	
-	<label>■ご予約日時</label>
-	
-		<link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css"/><br />
+			<link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css"/><br />
 
+
+	<label>■ご予約日時</label>
 	
 	<input type="text" name="yyk_dhms" id="yyk_dhms" placeholder="ご予約日時" size="24" autocomplete="off" onchange="checkForm();"/>
 				<br>
 
 
-
+<label>■ご利用人数</label>
+    <input type="text" name="num" id="num" maxlength="2" min="1" max="12" size="3" placeholder="1~12まで" onchange="numcheck();">名様<br />
+    
 
 
 
@@ -50,13 +51,12 @@
    <option>11:30(ランチ)</option>
    <option>12:00(ランチ)</option>
   </select>
-  <select id="cose_rnch">
+  <select name="cose_rnch" >
    <option>ご希望のコース</option>
-   <option>美食の歓びコース</option>
-   <option> 至福の午餐会コース</option>
+   <option value="0">美食の歓びコース &yen;9,000</option>
+   <option value="1"> 至福の午餐会コース &yen;10,500</option>
   </select>
 </div>  
-
 
 <input type="radio" name="kibo" id="diner" onclick="dp_dinr();">
 <label for="diner">ディナー</label>
@@ -67,22 +67,21 @@
    <option>17:30(ディナー)</option>
    <option>18:00(ディナー)</option>
   </select>
-  <select id="cose_diner">
+  <select name="cose_diner">
    <option>ご希望のコース</option>
    <option  value="2">ムニュKAGURA ～神楽～ &yen;6,500</option>
    <option  value="3">シェフ大堀スペシャルディナー &yen;7,000</option>
   </select>
  </div>  
 
+ 
 
  
- 
- <input type="num" name="num" size="2" onchange="numcheck()" id="num" maxlength="2" min="1"
- max="12" size="3">名様 
- 
- <input type="button" onclick="total_chk()" value="合計する">
- <input type="num" name="total_plice" id="total_plice">
+ <input type="button" id="total_chk" value="合計する">
+  <input type="num" name="total_plice" id="total_plice">円
 
+  
+ 
 
 
 
@@ -102,19 +101,22 @@
  <input type="text" name="pref" maxlength="4"> 
 <label>■市町村</label> 
   <input type="text" name="city"><br />
-<label>■それ以降の住所と番地</label> <br />
+<label>■それ以降の住所と番地</label>
 
-  <input type="text" name="addr" id="addr"  onchange="addcheck();">
- <!--イベントチャッチに問題あるかも-->     
+  <input type="text" name="addr" id="addr"  onchange="addcheck();"> <br />
 
-<input name="kana" id="kana" placeholder="フリガナ" onchange="kanacheck();">
+<label>■お名前</label>
+<input type="text" name="name1" size="30"><br />
+
+<label>■フリガナ</label>
+<input name="kana" id="kana" placeholder="フリガナ" onchange="kanacheck();"><br />
 
 
 
  
- 	<input type="submit" value="送信"/>
-	<input type="reset" value="リセット"/><br />
- 
+ 	<input type="button" id="sub" onclick="addcheck()?submit():alert('入力に不備があります');" value="送信"/>
+	<input type="reset" value="リセット"/>
+
   </form>
 
 
@@ -132,15 +134,21 @@
 
 
 
-<script src="frm.js">
 
-</script>
 
 
 
 
 <script src="./jquery.js"></script>
 <script src="./jquery.datetimepicker.js"></script>
+
+
+<script src="frm.js"></script>
+
+
+
+
+
 <script>
 
 	$('#yyk_dhms').datetimepicker({
